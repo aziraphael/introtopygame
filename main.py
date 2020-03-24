@@ -8,6 +8,7 @@ import sys
 pygame.init()
 screeninfo = pygame.display.Info()
 screenSize = (screeninfo.current_w,screeninfo.current_h)
+width, height = (screeninfo.current_w, screeninfo.current_h)
 clock = pygame.time.Clock()
 color = (0,127,255)
 screen = pygame.display.set_mode(screenSize)
@@ -15,6 +16,7 @@ screen = pygame.display.set_mode(screenSize)
 
 robot = pygame.image.load('sprite.png')
 robo_rect = robot.get_rect()
+robo_rect.center = (width//2,height//2)
 
 #actual code stufffffffff
 
