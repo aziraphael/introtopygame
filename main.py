@@ -3,6 +3,8 @@
 import pygame
 from pygame import *
 import sys
+import random
+from robot import *
 
 #globals
 pygame.init()
@@ -13,41 +15,28 @@ clock = pygame.time.Clock()
 color = (0,127,255)
 screen = pygame.display.set_mode(screenSize)
 #robot sprite and rect
-
-robot = pygame.image.load('sprite.png')
-robo_rect = robot.get_rect()
-robo_rect.center = (width//2,height//2)
-
-#robot speed and stuff
-speed = pygame.math.Vector2(0,10)
-
-
+robots = []
 
 
 
 #actual code stufffffffff
-
-def moveRobot():
-    robo_rect.move_ip(speed)
-
-
 def main():
-    global screeninfo
-    global screenSize
-    global clock
-    global color
-
-
     
+    for i in range(10):
+        robots.append(Robot((width//2,height//2)))
+
     while True:
         clock.tick(60)
 
         for event in pygame.event.get():
             if event.type == QUIT:
                 sys.exit()
-        moveRobot()
+
         screen.fill(color)
-        screen.blit(robot,robo_rect)
+        for robot in robots:
+            robot.move_robot()
+        for robot in robots:
+            robot.draw_robot(screen)
         pygame.display.flip()
 
 
